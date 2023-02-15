@@ -16,43 +16,23 @@ function createMarkup(arrs) {
     />
   </a>
 </div>
-    `).join('')
+`).join('')
 }
 
 refDiv.insertAdjacentHTML("afterbegin", createMarkup(galleryItems) )
 
-
-
-
-
-// const instance = basicLightbox.create(`
-//    <div></div>
-// `)
-
-
-const instance = basicLightbox.create(`
-    <img src="https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825_1280.jpg" width="800" height="600">
-`)
-
-
-
 function onCloseModalWindow(evt) {
     
-    //     // console.log(evt);
+    
     if (evt.target.classList.contains('gallery__image')) {
         evt.preventDefault()
 
-// console.log(evt.dataSet);
-     
-
-
-       return instance.show(evt => evt.srcElement)
+const instance = basicLightbox.create(`
+    <img src = ${evt.target.dataset.source}>
+`)
+      return instance.show()
+    }    
     }
-
-    
-        // instance.close()    
-    }
-
 
 
 
