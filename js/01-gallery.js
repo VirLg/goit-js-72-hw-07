@@ -19,30 +19,31 @@ function createMarkup(arrs) {
 `).join('')
 }
 
+
 refDiv.insertAdjacentHTML("afterbegin", createMarkup(galleryItems) )
 
 function onCloseModalWindow(evt) {
     
-    
-    if (evt.target.classList.contains('gallery__image')) {
-        evt.preventDefault()
+  if (evt.target.classList.contains('gallery__image')) {
+    evt.preventDefault()
 
-const instance = basicLightbox.create(`
+    const instance = basicLightbox.create(`
     <img src = ${evt.target.dataset.source}>
 `)
-      return instance.show()
-    }    
+    return instance.show()
+
+  }
+
+document.addEventListener("keydown", keyBoardCloseModal)
+function keyBoardCloseModal (evt) {
+  if (evt.code === "Escape") {
+       
+      // document.removeEventListener('keydown', keyBoardCloseModal)
+     console.log("cybvf.");
+      return instance.close()
     }
-
-
-
-
-
-
-
-
-
-
+  }
+}
 
 
 
