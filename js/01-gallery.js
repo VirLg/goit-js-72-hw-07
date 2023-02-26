@@ -23,27 +23,43 @@ function createMarkup(arrs) {
 refDiv.insertAdjacentHTML("afterbegin", createMarkup(galleryItems) )
 
 function onCloseModalWindow(evt) {
-    
-  if (evt.target.classList.contains('gallery__image')) {
-    evt.preventDefault()
+  
+  evt.preventDefault()
 
+  if (evt.target.nodeName === "IMG") {
+  
     const instance = basicLightbox.create(`
     <img src = ${evt.target.dataset.source}>
 `)
+    console.log(instance);
     return instance.show()
 
   }
-
-document.addEventListener("keydown", keyBoardCloseModal)
-function keyBoardCloseModal (evt) {
-  if (evt.code === "Escape") {
-       
-      // document.removeEventListener('keydown', keyBoardCloseModal)
-     console.log("cybvf.");
-      return instance.close()
-    }
-  }
 }
+
+
+
+
+const instance = basicLightbox.create("img", {
+
+  onShow: () => window.addEventListener
+    ("keydown", function (evt) { if (evt.code === "Escape") instance.close() }),
+  onClose: () => window.removeEventListener
+    ("keydown", function (evt) { if (evt.code === "Escape") instance.close() }),
+});
+  
+  
+  
+// document.addEventListener("keydown", keyBoardCloseModal)
+// function keyBoardCloseModal (evt) {
+//   if (evt.code === "Escape") {
+       
+//       // document.removeEventListener('keydown', keyBoardCloseModal)
+//      console.log("cybvf.");
+//       return instance.close()
+//     }
+//   }
+// }
 
 
 

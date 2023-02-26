@@ -22,7 +22,7 @@ refUl.insertAdjacentHTML("afterbegin", markupGallary)
 
 
 
-let gallery = new SimpleLightbox('.gallery a',
+const gallery = new SimpleLightbox('.gallery a',
     {
         navText: ['←', '→'],
         captionsData: 'alt',
