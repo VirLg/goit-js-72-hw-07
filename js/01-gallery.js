@@ -29,23 +29,29 @@ function onCloseModalWindow(evt) {
   if (evt.target.nodeName === "IMG") {
   
     const instance = basicLightbox.create(`
-    <img src = ${evt.target.dataset.source}>
+    <img  class = "modal" src = ${evt.target.dataset.source}>
 `)
     console.log(instance);
-    return instance.show()
+    instance.show()
 
   }
 }
 
 
-
-
-const instance = basicLightbox.create("img", {
+const instance = basicLightbox.create(".modal", {
 
   onShow: () => window.addEventListener
-    ("keydown", function (evt) { if (evt.code === "Escape") instance.close() }),
+    ("keydown", (evt) => {
+      if (evt.code === "Escape") {
+        instance.close()
+      }      
+    }),
   onClose: () => window.removeEventListener
-    ("keydown", function (evt) { if (evt.code === "Escape") instance.close() }),
+    ("keydown", (evt) => {
+      if (evt.code === "Escape") { 
+        instance.close()
+      }     
+    }),
 });
   
   
