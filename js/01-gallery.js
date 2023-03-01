@@ -28,17 +28,10 @@ function onCloseModalWindow(evt) {
 
   if (evt.target.nodeName === "IMG") {
   
+
+
     const instance = basicLightbox.create(`
-    <img  class = "modal" src = ${evt.target.dataset.source}>
-`)
-    console.log(instance);
-    instance.show()
-
-  }
-}
-
-
-const instance = basicLightbox.create(".modal", {
+    <img  class = "modal" src = ${evt.target.dataset.source}>` , {
 
   onShow: () => window.addEventListener
     ("keydown", (evt) => {
@@ -53,19 +46,13 @@ const instance = basicLightbox.create(".modal", {
       }     
     }),
 });
-  
-  
-  
-// document.addEventListener("keydown", keyBoardCloseModal)
-// function keyBoardCloseModal (evt) {
-//   if (evt.code === "Escape") {
-       
-//       // document.removeEventListener('keydown', keyBoardCloseModal)
-//      console.log("cybvf.");
-//       return instance.close()
-//     }
-//   }
-// }
+    console.log(instance);
+    instance.show()
+
+  }
+}
+
+
 
 
 
